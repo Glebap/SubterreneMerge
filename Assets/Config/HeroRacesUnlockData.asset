@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60310a460094bda8c99abea8e167834, type: 3}
+  m_Name: HeroRacesUnlockData
+  m_EditorClassIdentifier: 
+  _data:
+  - _heroesTierList: {fileID: 11400000, guid: 6c93f1b0eddf0ad41ba14a646b917355, type: 2}
+    _unlockLevel: 1
+  - _heroesTierList: {fileID: 11400000, guid: 321d9e4e256bc4a4eb0c1d3ae294366f, type: 2}
+    _unlockLevel: 3
+  - _heroesTierList: {fileID: 11400000, guid: acfaf0cfb39aca648b0ce1efc45a6e4d, type: 2}
+    _unlockLevel: 3
