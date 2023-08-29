@@ -4,6 +4,7 @@ public abstract class PlayerPrefValue<T>
 	private readonly T _defaultValue;
 	private readonly System.Func<T, T>[] _valuePreprocessors;
 
+	
 	public T Value
 	{
 		get => GetValue(_key, _defaultValue);

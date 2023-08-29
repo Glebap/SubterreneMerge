@@ -13,6 +13,7 @@ public class RestartManager : MonoBehaviour
 	[Inject] private Board _board;
 	[Inject] private HeroesPool _heroesPool;
 
+	
 	private void OnEnable()
 	{
 		_confirmWindow.AcceptButtonCLicked += OnAcceptButtonCLicked;

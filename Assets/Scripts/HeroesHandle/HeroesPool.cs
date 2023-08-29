@@ -128,11 +128,11 @@ public class HeroesPool : IDisposable
         _initialRacesHeroData = initialRacesHeroData;
     }
 
-    private void SetHeroesToPool(IList<HeroData> heroesData, bool fillEmpty = true)
+    private void SetHeroesToPool(HeroData[] heroesData, bool fillEmpty = true)
     {
         _currentHeroesData = heroesData == null 
             ? GetRandomHeroesData(Capacity).ToArray() 
-            : heroesData.Select(GetInitialHeroData).ToArray();
+            : GetInitialHeroesData(heroesData, fillEmpty).ToArray();
         
         for (var index = 0; index < Capacity; index++)
         {
@@ -140,15 +140,8 @@ public class HeroesPool : IDisposable
 
             if (currentHeroData == null)
             {
-                if (fillEmpty)
-                {
-                    currentHeroData = GetRandomHeroData();
-                }
-                else
-                {
-                    _currentHeroes[index].Destroy(_halfSpawnDuration);
-                    continue;
-                }
+                _currentHeroes[index].Destroy(_halfSpawnDuration);
+                continue;
             }
 
             SpawnHero(currentHeroData, index);
@@ -176,8 +169,10 @@ public class HeroesPool : IDisposable
         return _initialRacesHeroData[(HeroRace)Random.Range(0, _initialRacesHeroData.Count)];
     }
 
-    private HeroData GetInitialHeroData(HeroData heroData)
+    private IEnumerable<HeroData> GetInitialHeroesData(HeroData[] heroesData, bool fillEmpty = true)
     {
-        return heroData?.Race != null ? _initialRacesHeroData[heroData.Race] : null;
+        return heroesData.Select(heroData => heroData?.Race != null 
+            ? _initialRacesHeroData[heroData.Race] 
+            : fillEmpty ? GetRandomHeroData() : null);
     }
 }
